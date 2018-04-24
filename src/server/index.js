@@ -1,12 +1,12 @@
 import express from 'express'
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
+// import webpack from 'webpack'
+// import webpackDevMiddleware from 'webpack-dev-middleware'
+// import webpackHotMiddleware from 'webpack-hot-middleware'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import bodyParser from 'body-parser'
 import path from 'path'
-import config from '../../build/webpack.dev.conf'
+// import config from '../../build/webpack.dev.conf'
 import api from './router'
 import user from './router/user'
 
@@ -28,18 +28,18 @@ app.use(cookieParser())
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-
-if (app.get('env') === 'development') {
-  const compiler = webpack(config)
-
-  app.use(webpackDevMiddleware(compiler, {
-    hot: true,
-    publicPath: '/',
-    stats: { colors: true }
-  }))
-
-  app.use(webpackHotMiddleware(compiler))
-}
+//
+// if (app.get('env') === 'development') {
+//   const compiler = webpack(config)
+//
+//   app.use(webpackDevMiddleware(compiler, {
+//     hot: true,
+//     publicPath: '/',
+//     stats: { colors: true }
+//   }))
+//
+//   app.use(webpackHotMiddleware(compiler))
+// }
 
 
 app.use('/user', user)
