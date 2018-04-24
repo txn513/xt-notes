@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "npm run dev",
+    "start": "nodemon index.js",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js"
   },
