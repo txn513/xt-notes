@@ -1,12 +1,12 @@
 import express from 'express'
-// import webpack from 'webpack'
-// import webpackDevMiddleware from 'webpack-dev-middleware'
-// import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import bodyParser from 'body-parser'
 import path from 'path'
-// import config from '../../build/webpack.dev.conf'
+import config from '../../build/webpack.dev.conf'
 import api from './router'
 import user from './router/user'
 
@@ -70,6 +70,7 @@ app.use(function (err, req, res, next) {
   // res.status(500).send('someting wrong')
 })
 
-app.listen(4000)
+const port = process.env.PORT || 4000
+app.listen(port)
 
 export default app
