@@ -1,4 +1,4 @@
-# learned-today
+# xt-notes
 
 > A Vue.js project
 
