@@ -1,6 +1,5 @@
 import express from 'express'
 import webpack from 'webpack'
-import assert from 'assert'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import cookieParser from 'cookie-parser'
@@ -21,6 +20,7 @@ app.use(session({
   cookie: { maxAge: 600000 }
 }))
 
+
 // body-parser
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
@@ -28,15 +28,19 @@ app.use(cookieParser())
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-const compiler = webpack(config)
 
-app.use(webpackDevMiddleware(compiler, {
-  hot: true,
-  publicPath: '/',
-  stats: { colors: true }
-}))
+if (app.get('env') === 'development') {
+  const compiler = webpack(config)
 
-// app.use(webpackHotMiddleware(compiler))
+  app.use(webpackDevMiddleware(compiler, {
+    hot: true,
+    publicPath: '/',
+    stats: { colors: true }
+  }))
+
+  app.use(webpackHotMiddleware(compiler))
+}
+
 
 app.use('/user', user)
 app.use(function (req, res, next) {
