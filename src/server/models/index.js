@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
-mongoose.connect('mongodb://127.0.0.1:27017/mynote')
+let mongoDB = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mynote'
+mongoose.connect(mongoDB)
 
 const NoteSchema = Schema({
   user_id: String,
