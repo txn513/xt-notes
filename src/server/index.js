@@ -53,8 +53,6 @@ app.use(function (req, res, next) {
 
 app.use('/api', api)
 
-
-
 app.use(function (err, req, res, next) {
 
   res.locals.message = err.message;
@@ -63,11 +61,6 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-
-  // res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // console.log(res.locals.error)
-  // console.error(err.stack)
-  // res.status(500).send('someting wrong')
 })
 
 const port = process.env.PORT || 4000
