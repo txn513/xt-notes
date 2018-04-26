@@ -8,20 +8,6 @@
 <script>
 export default {
   name: 'App',
-  data () {
-    return {
-      // isLogin () {
-      //   this.axios.get('/api/isLogin').then((response) => {
-      //     console.log(response.data)
-      //     let data = response.data
-      //     sessionStorage.isLogin = data.loginStatus;
-      //   })
-      // }
-    }
-  },
-  created () {
-  }
-
 }
 </script>
 

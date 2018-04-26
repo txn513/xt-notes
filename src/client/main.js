@@ -39,24 +39,16 @@ Vue.axios.interceptors.response.use(
     return response
   },
   error => {
-    console.log(error.response)
     if (error.response) {
       switch (error.response.status) {
         case 401:
-          // console.log(logout);
           // 返回 401 清除token信息并跳转到登录页面
-          // store.commit(logout);
           sessionStorage.isLogin = false
           store.commit('logout')
           router.push({
             path: '/login',
             query: {redirect: router.currentRoute.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
           })
-
-        // {
-        //   path: '/login',
-        //     query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
-        // }
       }
     }
     return Promise.reject(error.response.data)   // 返回接口返回的错误信息
