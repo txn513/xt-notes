@@ -14,21 +14,27 @@
     </van-cell-group>
 
     <van-button id="submit" size="large" @click="submit">登录</van-button>
+
+    <loading v-show="!ifLoad"></loading>
   </div>
 </template>
 
 <script>
+import Loading from './Loding'
 export default {
   name: 'Login',
+  components: {Loading},
   data () {
     return {
       username: '',
       // email: '',
-      password: ''
+      password: '',
+      ifLoad: true
     }
   },
   methods: {
     submit () {
+      this.ifLoad = false;
       var _this = this
       this.axios({
         method: 'post',
@@ -40,6 +46,7 @@ export default {
           }
         }
       }).then((response) => {
+        this.ifLoad = true;
         console.log(response)
         let data = response.data
         if (data.userid) {
@@ -51,7 +58,8 @@ export default {
           sessionStorage.userid = data.userid
           this.$router.push({path: redirectPath})
         } else {
-          alert(data.error)
+          this.$toast(data.error);
+          // alert(data.error)
         }
       })
     },

@@ -17,9 +17,18 @@ router.post('/submitpost', function (req, res, next) {
   })
 })
 
+router.post('/deletenote', function (req, res, next) {
+  Note.deleteOne({_id: req.body.id}, function (err, notes) {
+    if (err) {
+      return next(err)
+    }
+    return res.json(notes)
+  });
+})
+
 router.get('/listallnotes', function (req, res, next) {
   let userid = req.session.userid
-  Note.find({user_id: userid}, function (err, notes) {
+  Note.find({user_id: userid}, null, {sort: {date: -1}}, function (err, notes) {
     if (err) {
       return next(err)
     }

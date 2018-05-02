@@ -41,7 +41,7 @@ router.post('/login', function (req, res, next) {
       return next(err)
     }
     if (!user) {
-      console.log(user)
+      return res.json({error: '用户名错误', userid: ''})
     } else {
       console.log(user)
       console.log(user.password)

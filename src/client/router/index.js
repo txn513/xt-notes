@@ -48,9 +48,6 @@ export default new Router({
       path: '/allmynotes',
       name: 'AllMyNotes',
       component: AllMyNotes,
-      meta: {
-        requiresAuth: true
-      }
     },
     {
       path: '*',
