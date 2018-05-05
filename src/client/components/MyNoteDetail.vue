@@ -66,12 +66,12 @@ export default {
           }
         }).then((response) => {
           if (response.data.ok === 1) {
-            this.$router.push({path: '/allmynotes'})
+            this.$router.go(-1)
           }
         })
       }).catch(() => {
         // on cancel
-      });;
+      });
       // this.axios({
       //   method: 'post',
       //   url: '/api/deletenote',
