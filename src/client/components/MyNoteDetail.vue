@@ -2,20 +2,21 @@
   <div id="my-note-detail">
 
     <van-nav-bar
-      title="xxxxx"
+      :title="getTitle(noteData.content)"
       left-text="返回"
       right-text="编辑"
       left-arrow
       @click-left="onClickLight"
     />
     <div id="panel-wrap">
-      <div class="xt-panel" v-if="noteData">
-        <div class="xt-panel-title">{{getTitle(noteData.content)}}</div>
-        <div class="xt-panel-content"><pre>{{noteData.content}}</pre></div>
-        <div class="xt-panel-sub">{{new Date(noteData.date).toLocaleString()}}
-          <!--<span class="xt-panel-show">展开</span>-->
-        </div>
-      </div>
+      <xt-panel :type="3" :listItem="noteData"></xt-panel>
+      <!--<div class="xt-panel" v-if="noteData">-->
+        <!--<div class="xt-panel-title">{{getTitle(noteData.content)}}</div>-->
+        <!--<div class="xt-panel-content"><pre>{{noteData.content}}</pre></div>-->
+        <!--<div class="xt-panel-sub">{{new Date(noteData.date).toLocaleString()}}-->
+          <!--&lt;!&ndash;<span class="xt-panel-show">展开</span>&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
 
     </div>
     <!--<van-button type="danger">危险按钮</van-button>-->
@@ -25,8 +26,10 @@
 </template>
 
 <script>
+import xtPanel from './XtPanel.vue'
 export default {
   name: 'MyNoteDetail',
+  components: {xtPanel},
   data () {
     return {
       noteId: '',

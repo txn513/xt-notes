@@ -2,16 +2,19 @@
     <div id="is-input">
       <h1>notes</h1>
       <div class="input-wrap">
-        <van-cell-group>
-          <van-field
-            v-model.trim="input"
-            type="textarea"
-            placeholder="请输入内容"
-            rows="4"
-            autosize
-            @keyup = keyUp
-          />
-        </van-cell-group>
+
+        <xt-panel :type="1" @inputContent="getInput"></xt-panel>
+
+        <!--<van-cell-group>-->
+          <!--<van-field-->
+            <!--v-model.trim="input"-->
+            <!--type="textarea"-->
+            <!--placeholder="请输入内容"-->
+            <!--rows="4"-->
+            <!--autosize-->
+            <!--@keyup = keyUp-->
+          <!--/>-->
+        <!--</van-cell-group>-->
         <van-button id="submit" size="large" @click="submit">提交</van-button>
 
         <div class="small-btn-wrap">
@@ -32,17 +35,23 @@
 </template>
 
 <script>
+import xtPanel from './XtPanel.vue'
 export default {
   name: 'Isinput',
+  components: {xtPanel},
   data () {
     return {
-      input: sessionStorage.inputContent || ''
+      input: ''
 
     }
   },
   methods: {
-    keyUp () {
-      sessionStorage.inputContent = this.input;
+    // keyUp () {
+    //   sessionStorage.inputContent = this.input;
+    // },
+    getInput (con) {
+      this.input = con;
+      console.log(this.input);
     },
     isLogin () {
       this.axios.get('/user/isLogin').then((response) => {
