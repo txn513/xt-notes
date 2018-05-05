@@ -33,26 +33,26 @@ Vue.config.productionTip = false
 //   });
 
 // http response 拦截器
-Vue.axios.interceptors.response.use(
-  response => {
-    // console.log(response)
-    return response
-  },
-  error => {
-    if (error.response) {
-      switch (error.response.status) {
-        case 401:
-          // 返回 401 清除token信息并跳转到登录页面
-          sessionStorage.isLogin = false
-          store.commit('logout')
-          router.push({
-            path: '/login',
-            query: {redirect: router.currentRoute.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
-          })
-      }
-    }
-    return Promise.reject(error.response.data)   // 返回接口返回的错误信息
-  });
+// Vue.axios.interceptors.response.use(
+//   response => {
+//     // console.log(response)
+//     return response
+//   },
+//   error => {
+//     if (error.response) {
+//       switch (error.response.status) {
+//         case 401:
+//           // 返回 401 清除token信息并跳转到登录页面
+//           sessionStorage.isLogin = false
+//           store.commit('logout')
+//           router.push({
+//             path: '/login',
+//             query: {redirect: router.currentRoute.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
+//           })
+//       }
+//     }
+//     return Promise.reject(error.response.data)   // 返回接口返回的错误信息
+//   });
 
 const store = new Vuex.Store({
   state: {
