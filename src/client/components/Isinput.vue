@@ -3,18 +3,8 @@
       <h1>notes</h1>
       <div class="input-wrap">
 
-        <xt-panel :type="1" @inputContent="getInput"></xt-panel>
+        <xt-panel :inputContent="input" :type="1" @inputContent="getInput"></xt-panel>
 
-        <!--<van-cell-group>-->
-          <!--<van-field-->
-            <!--v-model.trim="input"-->
-            <!--type="textarea"-->
-            <!--placeholder="请输入内容"-->
-            <!--rows="4"-->
-            <!--autosize-->
-            <!--@keyup = keyUp-->
-          <!--/>-->
-        <!--</van-cell-group>-->
         <van-button id="submit" size="large" @click="submit">提交</van-button>
 
         <div class="small-btn-wrap">
@@ -41,7 +31,7 @@ export default {
   components: {xtPanel},
   data () {
     return {
-      input: ''
+      input: sessionStorage.inputContent || ''
 
     }
   },

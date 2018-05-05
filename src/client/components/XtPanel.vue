@@ -13,13 +13,11 @@
       </van-cell-group>
     </template>
 
-    <template v-if="listItem && type==2 || listItem && type==3">
+    <template v-if="(listItem && type==2) || (listItem && type==3)">
       <div :class="{'xt-panel-2': type == 2}" @click="goToDetail(listItem._id)">
         <div class="xt-panel-title">{{getTitle(listItem.content)}}</div>
         <div class="xt-panel-content"><pre>{{listItem.content}}</pre><p v-if="type==2&&ifDot(listItem.content)">....</p></div>
-        <div class="xt-panel-sub">{{new Date(listItem.date).toLocaleString()}}
-          <!--<span class="xt-panel-show">展开</span>-->
-        </div>
+        <div class="xt-panel-sub">{{new Date(listItem.date).toLocaleString()}}</div>
       </div>
 
     </template>
@@ -31,11 +29,15 @@ export default {
   name: 'XtPanel',
   props: {
     type: Number,
-    listItem: Object
+    listItem: Object,
+    inputContent: {
+      type: String,
+      default: ''
+    }
   },
   data () {
     return {
-      input: sessionStorage.inputContent || ''
+      input: this.inputContent
     }
   },
   methods: {

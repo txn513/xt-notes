@@ -1,25 +1,16 @@
 <template>
   <div id="my-note-detail">
-
     <van-nav-bar
-      :title="getTitle(noteData.content)"
+      :title="title"
       left-text="返回"
       right-text="编辑"
       left-arrow
       @click-left="onClickLight"
+      @click-right="editNote"
     />
     <div id="panel-wrap">
       <xt-panel :type="3" :listItem="noteData"></xt-panel>
-      <!--<div class="xt-panel" v-if="noteData">-->
-        <!--<div class="xt-panel-title">{{getTitle(noteData.content)}}</div>-->
-        <!--<div class="xt-panel-content"><pre>{{noteData.content}}</pre></div>-->
-        <!--<div class="xt-panel-sub">{{new Date(noteData.date).toLocaleString()}}-->
-          <!--&lt;!&ndash;<span class="xt-panel-show">展开</span>&ndash;&gt;-->
-        <!--</div>-->
-      <!--</div>-->
-
     </div>
-    <!--<van-button type="danger">危险按钮</van-button>-->
     <van-button id="delete" type="danger" size="large" @click="deleteNote">删除</van-button>
 
   </div>
@@ -33,7 +24,9 @@ export default {
   data () {
     return {
       noteId: '',
-      noteData: null
+      noteData: null,
+      title: '',
+      noteCon: ''
     }
   },
   methods: {
@@ -42,11 +35,10 @@ export default {
     },
     getTitle (content) {
       if (content.indexOf('\n') > -1) {
-        return content.split('\n')[0]
+        return content.split('\n')[0];
       } else {
         return content;
       }
-
     },
     getNote () {
       this.axios({
@@ -57,7 +49,9 @@ export default {
         }
       }).then((res) => {
         console.log(res.data)
-        this.noteData = res.data
+        this.noteData = res.data;
+        this.title = this.getTitle(this.noteData.content);
+        this.noteCon = this.noteData.content;
       })
     },
     deleteNote () {
@@ -89,6 +83,12 @@ export default {
       //     this.$router.push({path: '/allmynotes'})
       //   }
       // })
+    },
+    editNote () {
+      if (this.noteCon) {
+        this.$router.push({name: 'EditNote', params: {con: this.noteCon, id: this.noteId}});
+        // sessionStorage.editInput = this.noteCon;
+      }
     }
   },
   created () {

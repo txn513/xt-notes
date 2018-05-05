@@ -46,4 +46,15 @@ router.post('/notedetail', function (req, res, next) {
   });
 });
 
+router.post('/editnote', function (req, res, next) {
+  let noteId = req.body.id;
+  let noteCon = req.body.content;
+  Note.updateOne({_id: noteId}, {content: noteCon, date: Date.now()}, function (err, note) {
+    if (err) {
+      return next(err)
+    }
+    return res.json(note)
+  });
+});
+
 export default router

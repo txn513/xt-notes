@@ -6,44 +6,11 @@
       left-arrow
       @click-left="onClickLight"
     />
-
-
     <div class="xt-content-wrap">
-
-
-
-
       <div id="panel-wrap" v-for="item in listOfNotes">
-
-
         <xt-panel :type="2" :listItem="item"></xt-panel>
-
-
-        <!--<div class="xt-panel" @click="goToDetail(item._id)">-->
-          <!--<div class="xt-panel-title">{{getTitle(item.content)}}</div>-->
-          <!--<div class="xt-panel-content"><pre>{{item.content}}</pre><p v-if="ifDot(item.content)">....</p></div>-->
-          <!--<div class="xt-panel-sub">{{new Date(item.date).toLocaleString()}}-->
-            <!--&lt;!&ndash;<span class="xt-panel-show">展开</span>&ndash;&gt;-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<van-cell-swipe :right-width="65">-->
-        <!--<van-cell-group>-->
-        <!--<van-panel class="panel" :title="new Date(item.date).toLocaleString()">-->
-        <!--<div class="panel-content"><pre>{{item.content}}</pre></div>-->
-        <!--</van-panel>-->
-        <!--</van-cell-group>-->
-
-        <!--<span slot="right" class="cell-swipe-wrap" :data-id="item._id" @click="deleteNote(item._id)">-->
-        <!--<span class="cell-swipe">删除</span>-->
-        <!--</span>-->
-
-
-        <!--</van-cell-swipe>-->
-
       </div>
     </div>
-
-
   </div>
 </template>
 
