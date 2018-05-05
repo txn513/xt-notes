@@ -36,5 +36,14 @@ router.get('/listallnotes', function (req, res, next) {
   })
 })
 
+router.post('/notedetail', function (req, res, next) {
+  let noteId = req.body.id;
+  Note.findOne({_id: noteId}, function (err, note) {
+    if (err) {
+      return next(err)
+    }
+    return res.json(note)
+  });
+});
 
 export default router

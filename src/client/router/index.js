@@ -7,6 +7,7 @@ import LoginSuccess from '@/components/LoginSuccess'
 import RegisterSuccess from '@/components/RegisterSuccess'
 import SubmitSuccess from '@/components/SubmitSuccess'
 import AllMyNotes from '@/components/AllMyNotes'
+import MyNoteDetail from '@/components/MyNoteDetail'
 import PageNotFound from '@/components/404'
 
 Vue.use(Router)
@@ -47,7 +48,12 @@ export default new Router({
     {
       path: '/allmynotes',
       name: 'AllMyNotes',
-      component: AllMyNotes,
+      component: AllMyNotes
+    },
+    {
+      path: '/mynotedetail/:id',
+      name: 'MyNoteDetail',
+      component: MyNoteDetail
     },
     {
       path: '*',

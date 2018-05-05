@@ -4,11 +4,12 @@
       <div class="input-wrap">
         <van-cell-group>
           <van-field
-            v-model="input"
+            v-model.trim="input"
             type="textarea"
             placeholder="请输入内容"
             rows="4"
             autosize
+            @keyup = keyUp
           />
         </van-cell-group>
         <van-button id="submit" size="large" @click="submit">提交</van-button>
@@ -35,33 +36,40 @@ export default {
   name: 'Isinput',
   data () {
     return {
-      input: '',
+      input: sessionStorage.inputContent || ''
 
     }
   },
   methods: {
+    keyUp () {
+      sessionStorage.inputContent = this.input;
+    },
     isLogin () {
       this.axios.get('/user/isLogin').then((response) => {
-        let data = response.data
+        let data = response.data;
         localStorage.isLogin = data.loginStatus
         if (data.loginStatus == true) {
-          return this.$store.commit('isLogin')
+          return this.$store.commit('isLogin');
         }
-        this.$store.commit('logout')
+        this.$store.commit('logout');
       })
     },
     logout () {
       this.axios.get('/user/logout').then((response) => {
-        let data = response.data
+        let data = response.data;
 
-        localStorage.isLogin = data.loginStatus
-        this.$store.commit('logout')
-        console.log(localStorage.isLogin)
+        localStorage.isLogin = data.loginStatus;
+        this.$store.commit('logout');
+        // console.log(localStorage.isLogin)
       })
     },
     submit () {
       var _this = this
+      if (this.input == '') {
+        this.$toast('请输入内容');
+        return
 
+      }
       this.axios({
         method: 'post',
         url: '/api/submitpost',
@@ -70,14 +78,15 @@ export default {
         }
       }).then(function (res) {
         console.log(res.data.status == true)
-        let data = res.data.status
+        let data = res.data.status;
         if (data) {
-          _this.$router.push({path: '/SubmitSuccess'})
+          sessionStorage.inputContent = '';
+          _this.$router.push({path: '/SubmitSuccess'});
         }
       })
     }
   },
-  created(){
+  created () {
     this.isLogin()
   },
   computed: {
@@ -106,6 +115,7 @@ export default {
     border: none;
   }
   #submit {
+    width: 9rem;
     margin-top:1rem;
   }
   a {

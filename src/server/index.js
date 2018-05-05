@@ -17,7 +17,7 @@ let app = express()
 
 app.use(session({
   secret: 'keyboard cat',
-  cookie: { maxAge: 600000 }
+  cookie: { maxAge: 6000000 }
 }))
 
 

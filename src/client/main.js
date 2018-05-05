@@ -56,7 +56,8 @@ Vue.axios.interceptors.response.use(
 
 const store = new Vuex.Store({
   state: {
-    isLogin: null
+    isLogin: null,
+    // inputContent: sessionStorage.inputContent || ''
   },
   mutations: {
     logout (state) {

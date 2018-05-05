@@ -67,7 +67,7 @@ export default {
       this.$router.push({path: '/register'})
     },
     onClickLight () {
-      window.history.go(-1)
+      this.$router.go(-1)
     }
   }
 }
@@ -78,6 +78,7 @@ export default {
     margin-top: 0.3rem;
   }
   #submit {
+    width: 9rem;
     margin-top: 1rem;
   }
 </style>

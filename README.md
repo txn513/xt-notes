@@ -4,7 +4,7 @@
 
 ## 技术栈
 
-vue2 + vuex + vue-router + webpack + ES6 + axios + express + mongoose
+vue2 + vuex + vue-router + webpack + sass + ES6 + axios + express + mongoose
 
 ## 项目运行
 
@@ -29,5 +29,8 @@ npm run dev
 # 如果运行出现代理错误 请确保 config 文件下 index.js proxyTable代理正确
 
 ```
+
+## 功能介绍
+
 
 

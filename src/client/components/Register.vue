@@ -50,6 +50,9 @@ export default {
     },
     onClickRight () {
       this.$router.push({path: '/login'})
+    },
+    onClickLight () {
+      this.$router.go(-1)
     }
   }
 
@@ -61,6 +64,7 @@ export default {
   margin-top: 0.3rem;
 }
 #submit {
+  width: 9rem;
   margin-top: 1rem;
 }
 </style>
