@@ -1,0 +1,8 @@
+$mainColor: #805e4b;
+.theme-1 {
+  .van-nav-bar__text,
+  .van-nav-bar .van-icon,
+  .van-nav-bar__title{
+    color: $mainColor;
+  }
+}

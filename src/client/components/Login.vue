@@ -1,20 +1,22 @@
 <template>
   <div id="login">
-    <van-nav-bar
-      title="登录"
-      left-text="返回"
-      right-text="注册"
-      left-arrow
-      @click-right="onClickRight"
-      @click-left="onClickLight"
-    />
+    <!--<van-nav-bar-->
+      <!--title="登录"-->
+      <!--left-text="返回"-->
+      <!--right-text="注册"-->
+      <!--left-arrow-->
+      <!--@click-right="onClickRight"-->
+      <!--@click-left="onClickLight"-->
+    <!--/>-->
+
+    <xt-nav title="登录" leftText="返回" rightText="注册" :leftClick="onClickLight" :rightClick="onClickRight"></xt-nav>
     <van-cell-group class="cell-group">
       <van-field label="用户名" v-model="username" placeholder="请输入用户名"/>
       <van-field label="密码" type="password" v-model="password" placeholder="请输入密码"/>
     </van-cell-group>
 
-    <van-button id="submit" size="large" @click="submit">登录</van-button>
-
+    <!--<van-button id="submit" size="large" @click="submit">登录</van-button>-->
+    <xt-button :content="loginBtn" @click.native="submit"></xt-button>
     <loading v-show="!ifLoad"></loading>
   </div>
 </template>
@@ -29,7 +31,8 @@ export default {
       username: '',
       // email: '',
       password: '',
-      ifLoad: true
+      ifLoad: true,
+      loginBtn: '登录'
     }
   },
   methods: {

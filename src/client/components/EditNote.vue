@@ -1,23 +1,26 @@
 <template>
     <div id="edit-note">
-      <van-nav-bar
-        title="编辑"
-        left-text="取消"
-        left-arrow
-        @click-left="onClickLight"
-      />
-
+      <!--<van-nav-bar-->
+        <!--title="编辑"-->
+        <!--left-text="取消"-->
+        <!--left-arrow-->
+        <!--@click-left="onClickLight"-->
+      <!--/>-->
+      <xt-nav title="编辑" leftText="取消" :leftClick="onClickLight"></xt-nav>
       <xt-panel :inputContent="input" :type="1" @inputContent="getInput"></xt-panel>
 
-      <van-button id="submit" size="large" @click="submit">提交</van-button>
+      <!--<van-button id="submit" size="large" @click="submit">提交</van-button>-->
+      <xt-button @click.native="submit"></xt-button>
     </div>
+
 </template>
 
 <script>
-  import xtPanel from './elements/XtPanel.vue'
+import xtPanel from './elements/XtPanel.vue'
+import xtButton from './elements/XtButton'
 export default {
   name: 'EditNote',
-  components: {xtPanel},
+  components: {xtPanel, xtButton},
   data () {
     return {
       input: '',

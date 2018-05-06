@@ -1,6 +1,6 @@
 <template>
     <div id="is-input">
-      <h1>notes</h1>
+      <h1 :style="{color: currentColor}">notes</h1>
       <div class="input-wrap">
 
         <xt-panel :inputContent="input" :type="1" @inputContent="getInput"></xt-panel>
@@ -24,6 +24,10 @@
 
       </div>
 
+      <div class="color-switch">
+        <div class="color-item" v-for="item in colorArr" :style="{background: item}" @click="colorSwitch(item)"></div>
+      </div>
+
     </div>
 </template>
 
@@ -35,14 +39,11 @@ export default {
   components: {xtPanel, xtButton},
   data () {
     return {
-      input: sessionStorage.inputContent || ''
-
+      input: sessionStorage.inputContent || '',
+      colorArr: ['#3C989E', '#5DB5A4', '#F4CDA5', '#F57A82', '#ED5276']
     }
   },
   methods: {
-    // keyUp () {
-    //   sessionStorage.inputContent = this.input;
-    // },
     getInput (con) {
       this.input = con;
       console.log(this.input);
@@ -87,6 +88,9 @@ export default {
           _this.$router.push({path: '/SubmitSuccess'});
         }
       })
+    },
+    colorSwitch (color) {
+      this.$store.commit('changeColor', color)
     }
   },
   created () {
@@ -95,6 +99,9 @@ export default {
   computed: {
     login () {
       return this.$store.state.isLogin
+    },
+    currentColor () {
+      return this.$store.state.currentColor
     }
   }
 }
@@ -108,11 +115,11 @@ export default {
     font-size: 100px;
     font-weight: 100;
     text-align: center;
-    color: rgba(175, 47, 47, 0.15);
+    color: $mainColor;
     -webkit-text-rendering: optimizeLegibility;
     -moz-text-rendering: optimizeLegibility;
     text-rendering: optimizeLegibility;
-    margin: 0.5rem 0;
+    margin: 0 0;
   }
   .input-wrap .van-hairline:after {
     border: none;
@@ -127,17 +134,40 @@ export default {
     font-size: 18px;
     text-align: center;
     text-decoration: underline;
+    font-weight: 400;
   }
   .small-btn-wrap {
-    margin-top: 2rem;
+    margin-top: 60px;
   }
   .user-btn-wrap {
     margin-top: 24px;
     font-size: 14px;
     vertical-align: middle;
+    font-weight: 200;
   }
   .user-btn a {
     font-size: 0.4rem;
     padding: 0 0.3rem;
   }
+
+  .color-switch {
+    margin: 40px auto;
+    display: inline-block;
+    zoom: 1;
+    .color-item {
+      height: 50px;
+      width: 50px;
+      float: left;
+    }
+    &:after {
+      content: '.';
+      display: block;
+      visibility: hidden;
+      clear: both;
+      height: 0;
+    }
+  }
+
+
+
 </style>

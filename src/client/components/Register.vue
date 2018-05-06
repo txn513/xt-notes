@@ -1,18 +1,20 @@
 <template>
   <div id="register">
-    <van-nav-bar
-      title="注册"
-      left-text="返回"
-      right-text="登录"
-      @click-right="onClickRight"
-      left-arrow
-    />
+    <!--<van-nav-bar-->
+      <!--title="注册"-->
+      <!--left-text="返回"-->
+      <!--right-text="登录"-->
+      <!--@click-right="onClickRight"-->
+      <!--left-arrow-->
+    <!--/>-->
+    <xt-nav title="注册" leftText="返回" rightText="登录" :rightClick="onClickRight"></xt-nav>
     <van-cell-group class="cell-group">
       <van-field label="用户名" v-model="username" placeholder="请输入用户名" required/>
       <van-field label="密码" type="password" v-model="password" placeholder="请输入密码" required/>
     </van-cell-group>
 
-    <van-button id="submit" size="large" @click="submit">注册</van-button>
+    <xt-button :content="registerBtn" @click.native="submit"></xt-button>
+    <!--<van-button id="submit" size="large" @click="submit">注册</van-button>-->
   </div>
 </template>
 
@@ -23,7 +25,8 @@ export default {
     return {
       username: '',
       // email: '',
-      password: ''
+      password: '',
+      registerBtn: '注册'
     }
   },
   methods: {

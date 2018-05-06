@@ -13,10 +13,17 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueCookies from 'vue-cookies'
 
+//自定义组件
+import XtButton from 'elements/XtButton'
+import XtNav from 'elements/XtNav'
+
 Vue.use(Vuex)
 Vue.use(VueCookies)
 Vue.use(VueAxios, axios)
 Vue.use(Vant)
+
+Vue.component('xt-button', XtButton)
+Vue.component('xt-nav', XtNav)
 
 Vue.config.productionTip = false
 
@@ -58,6 +65,7 @@ const store = new Vuex.Store({
   state: {
     isLogin: null,
     // inputContent: sessionStorage.inputContent || ''
+    currentColor: '#3c989e'
   },
   mutations: {
     logout (state) {
@@ -65,6 +73,9 @@ const store = new Vuex.Store({
     },
     isLogin (state) {
       state.isLogin = true
+    },
+    changeColor (state, color) {
+      state.currentColor = color;
     }
   }
 })

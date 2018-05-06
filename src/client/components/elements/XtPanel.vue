@@ -16,13 +16,14 @@
     </template>
 
     <template v-if="type==2 || type==3">
-
       <loading :type="2" v-if="!listItem"></loading>
-      <div v-else :class="{'xt-panel-2': type == 2}" @click="goToDetail(listItem._id)">
-        <div class="xt-panel-title">{{getTitle(listItem.content)}}</div>
-        <div class="xt-panel-content"><pre>{{listItem.content}}</pre><p v-if="type==2&&ifDot(listItem.content)">....</p></div>
-        <div class="xt-panel-sub">{{new Date(listItem.date).toLocaleString()}}</div>
-      </div>
+
+        <div v-else :class="{'xt-panel-2': type == 2}" @click="goToDetail(listItem._id)">
+          <div class="xt-panel-title" :style="{color: currentColor}">{{getTitle(listItem.content)}}</div>
+          <div class="xt-panel-content"><pre>{{listItem.content}}</pre><p v-if="type==2&&ifDot(listItem.content)">....</p></div>
+          <div class="xt-panel-sub">{{new Date(listItem.date).toLocaleString()}}</div>
+        </div>
+
 
     </template>
   </div>
@@ -72,17 +73,17 @@ export default {
         return true;
       }
       return false;
-      // console.log(content.split('\n').length-1);
-      // if (/\n/g.search(content)) {
-      //
-      // } else {
-      //   return content;
-      // }
     },
     goToDetail (id) {
       this.$router.push({name: 'MyNoteDetail', params: {id: id}});
     }
+  },
+  computed: {
+    currentColor () {
+      return this.$store.state.currentColor
+    }
   }
+
 }
 </script>
 
@@ -92,7 +93,7 @@ export default {
     padding: 0.2rem 0.2rem 0.1rem;
     width: 9rem;
     /*height: 3rem;*/
-    margin: 0.3rem auto 0;
+    margin: 14px auto 0;
     border-radius: 4px;
     background: #fff;
     box-shadow: 0.05rem 0.1rem 0.2rem #eee, -0.05rem 0rem 0.2rem #eee;
@@ -153,5 +154,15 @@ export default {
     &:after {
       border-width: 0;
     }
+  }
+
+
+  .list-enter-active, .list-leave-active {
+    transition: all 1s;
+  }
+  .list-enter, .list-leave-to
+    /* .list-leave-active for below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(-30px);
   }
 </style>

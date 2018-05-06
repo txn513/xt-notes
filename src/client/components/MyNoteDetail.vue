@@ -1,32 +1,40 @@
 <template>
   <div id="my-note-detail">
-    <van-nav-bar
-      title="note内容"
-      left-text="返回"
-      right-text="编辑"
-      left-arrow
-      @click-left="onClickLight"
-      @click-right="editNote"
-    />
-    <div id="panel-wrap">
-      <xt-panel :type="3" :listItem="noteData"></xt-panel>
-    </div>
-    <van-button id="delete" type="danger" size="large" @click="deleteNote">删除</van-button>
-
+    <!--<van-nav-bar-->
+      <!--title="note内容"-->
+      <!--left-text="返回"-->
+      <!--right-text="编辑"-->
+      <!--left-arrow-->
+      <!--@click-left="onClickLight"-->
+      <!--@click-right="editNote"-->
+    <!--/>-->
+    <xt-nav title="note内容" leftText="返回" rightText="编辑" :leftClick="onClickLight" :rightClick="editNote"></xt-nav>
+    <transition name="translate">
+      <div v-if="ifMounted">
+        <div id="panel-wrap">
+          <xt-panel :type="3" :listItem="noteData"></xt-panel>
+        </div>
+        <xt-button :type='deleteBtnType' :content='deleteBtnCon' @click.native="deleteNote"></xt-button>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import xtPanel from './elements/XtPanel.vue'
+import xtButton from './elements/XtButton'
 export default {
   name: 'MyNoteDetail',
-  components: {xtPanel},
+  components: {xtPanel,xtButton},
   data () {
     return {
       noteId: '',
       noteData: null,
       title: '',
-      noteCon: ''
+      noteCon: '',
+      deleteBtnCon: '删除',
+      deleteBtnType: 'two',
+      ifMounted: false
     }
   },
   methods: {
@@ -48,7 +56,7 @@ export default {
           id: this.noteId
         }
       }).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         this.noteData = res.data;
         // this.title = this.getTitle(this.noteData.content);
         this.noteCon = this.noteData.content;
@@ -94,6 +102,9 @@ export default {
   created () {
     this.noteId = this.$route.params.id;
     this.getNote();
+  },
+  mounted () {
+    this.ifMounted = true
   }
 }
 </script>
@@ -142,5 +153,28 @@ export default {
   #delete {
     width: 9rem;
     margin-top: 1rem;
+  }
+
+  /* 动画 */
+  .translate-enter-active,
+  .translate-leave-active {
+    transition: all 1s;
+    opacity: 1;
+  }
+
+  .translate-enter,
+  .translate-leave-to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+
+  .list-enter-active, .list-leave-active {
+    transition: all 1s;
+  }
+  .list-enter, .list-leave-to
+    /* .list-leave-active for below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(-30px);
   }
 </style>

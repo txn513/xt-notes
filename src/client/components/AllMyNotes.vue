@@ -1,15 +1,20 @@
 <template>
   <div id="all-my-notes">
-    <van-nav-bar
-      title="我的notes"
-      left-text="返回"
-      left-arrow
-      @click-left="onClickLight"
-    />
+    <!--<van-nav-bar-->
+      <!--title="我的notes"-->
+      <!--left-text="返回"-->
+      <!--left-arrow-->
+      <!--@click-left="onClickLight"-->
+    <!--/>-->
+    <xt-nav title="我的notes" leftText="返回" :leftClick="onClickLight"></xt-nav>
     <div class="xt-content-wrap">
-      <div id="panel-wrap" v-for="item in listOfNotes">
-        <xt-panel :type="2" :listItem="item"></xt-panel>
-      </div>
+
+      <transition-group name="list" tag="p">
+        <div id="panel-wrap" v-for="item in listOfNotes" :key="item._id">
+          <xt-panel :type="2" :listItem="item"></xt-panel>
+        </div>
+      </transition-group>
+
     </div>
   </div>
 </template>
@@ -25,27 +30,6 @@ export default {
     }
   },
   methods: {
-    // getTitle (content){
-    //   if (content.indexOf('\n') > -1) {
-    //     return content.split('\n')[0]
-    //   } else {
-    //     return content;
-    //   }
-    //
-    // },
-    // ifDot (content) {
-    //   var num = content.split('\n').length - 1;
-    //   if (num > 2) {
-    //     return true;
-    //   }
-    //   return false;
-    //   // console.log(content.split('\n').length-1);
-    //   // if (/\n/g.search(content)) {
-    //   //
-    //   // } else {
-    //   //   return content;
-    //   // }
-    // },
     getAllNotes () {
       this.axios.get('/api/listallnotes').then((response) => {
         console.log(response.data)
@@ -54,21 +38,7 @@ export default {
     },
     onClickLight () {
       window.history.go(-1)
-    },
-
-    // deleteNote (id) {
-    //   this.axios({
-    //     method: 'post',
-    //     url: '/api/deletenote',
-    //     data: {
-    //       id: id
-    //     }
-    //   }).then((response) => {
-    //     if (response.data.ok === 1) {
-    //       this.getAllNotes()
-    //     }
-    //   })
-    // }
+    }
   },
   created () {
     this.getAllNotes();
@@ -157,5 +127,14 @@ export default {
   display: block;
   text-align: center;
   background-color: #F44;
+}
+/* 动画 */
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to
+  /* .list-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(-30px);
 }
 </style>
