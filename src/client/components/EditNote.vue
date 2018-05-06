@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import xtPanel from './XtPanel.vue'
+  import xtPanel from './elements/XtPanel.vue'
 export default {
   name: 'EditNote',
   components: {xtPanel},

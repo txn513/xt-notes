@@ -22,4 +22,13 @@ export default {
 h2 {
   font-size: 0.5rem;
 }
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 73.5px !important;
+  }
+  #app {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+}
 </style>

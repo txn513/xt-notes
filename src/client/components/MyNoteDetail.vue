@@ -1,7 +1,7 @@
 <template>
   <div id="my-note-detail">
     <van-nav-bar
-      :title="title"
+      title="note内容"
       left-text="返回"
       right-text="编辑"
       left-arrow
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import xtPanel from './XtPanel.vue'
+import xtPanel from './elements/XtPanel.vue'
 export default {
   name: 'MyNoteDetail',
   components: {xtPanel},
@@ -50,7 +50,7 @@ export default {
       }).then((res) => {
         console.log(res.data)
         this.noteData = res.data;
-        this.title = this.getTitle(this.noteData.content);
+        // this.title = this.getTitle(this.noteData.content);
         this.noteCon = this.noteData.content;
       })
     },

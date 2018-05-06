@@ -5,7 +5,10 @@
 
         <xt-panel :inputContent="input" :type="1" @inputContent="getInput"></xt-panel>
 
-        <van-button id="submit" size="large" @click="submit">提交</van-button>
+        <!--<a class="xt-button-circle"  @click="submit">提交</a>-->
+        <xt-button @click.native="submit"></xt-button>
+
+        <!--<van-button id="submit" size="large" @click="submit">提交</van-button>-->
 
         <div class="small-btn-wrap">
           <router-link class="small-btn" :to="{ name: 'AllMyNotes'}">我的notes</router-link>
@@ -25,10 +28,11 @@
 </template>
 
 <script>
-import xtPanel from './XtPanel.vue'
+import xtPanel from './elements/XtPanel'
+import xtButton from './elements/XtButton'
 export default {
   name: 'Isinput',
-  components: {xtPanel},
+  components: {xtPanel, xtButton},
   data () {
     return {
       input: sessionStorage.inputContent || ''
@@ -96,7 +100,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   #is-input {
   }
   #is-input h1 {
@@ -113,13 +117,14 @@ export default {
   .input-wrap .van-hairline:after {
     border: none;
   }
+
   #submit {
     width: 9rem;
     margin-top:1rem;
   }
   a {
     color: #c8c8c8;
-    font-size: 0.5rem;
+    font-size: 18px;
     text-align: center;
     text-decoration: underline;
   }
@@ -127,8 +132,9 @@ export default {
     margin-top: 2rem;
   }
   .user-btn-wrap {
-    margin-top: 0.6rem;
-    font-size: 0.4rem;
+    margin-top: 24px;
+    font-size: 14px;
+    vertical-align: middle;
   }
   .user-btn a {
     font-size: 0.4rem;
