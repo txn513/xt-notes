@@ -34,11 +34,13 @@ npm run dev
 #### 首页
 ![home](http://p8eyfvihb.bkt.clouddn.com/home1.png)
 #### 便签列表
-![home](http://p8eyfvihb.bkt.clouddn.com/noteslist.png)
+![list](http://p8eyfvihb.bkt.clouddn.com/noteslist.png)
 #### 删除便签
-![home](http://p8eyfvihb.bkt.clouddn.com/delete.png)
+![delete](http://p8eyfvihb.bkt.clouddn.com/delete.png)
 #### 修改便签
-![home](http://p8eyfvihb.bkt.clouddn.com/edit.png)
+![edit](http://p8eyfvihb.bkt.clouddn.com/edit.png)
+#### 登录注册
+![login-register](http://p8eyfvihb.bkt.clouddn.com/login-register.png)
 #### 更换主题
-
+![theme](http://p8eyfvihb.bkt.clouddn.com/home-color.png)
 
