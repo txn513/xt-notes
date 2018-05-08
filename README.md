@@ -1,6 +1,6 @@
 # xt-notes
 
-> a vue todo notes app (vue+express+mongoose) 一个基于vue+express+mongoose的notes个人便签应用
+> a vue todo notes app (vue+express+mongoose) | 一个基于vue+express+mongoose的notes个人便签应用
 
 ## 技术栈
 
@@ -35,6 +35,8 @@ npm run dev
 ![home](http://p8eyfvihb.bkt.clouddn.com/home1.png)
 #### 便签列表
 ![list](http://p8eyfvihb.bkt.clouddn.com/noteslist.png)
+#### 便签详情
+![detail](http://p8eyfvihb.bkt.clouddn.com/content.png)
 #### 删除便签
 ![delete](http://p8eyfvihb.bkt.clouddn.com/delete.png)
 #### 修改便签
@@ -44,3 +46,6 @@ npm run dev
 #### 更换主题
 ![theme](http://p8eyfvihb.bkt.clouddn.com/home-color.png)
 
+## License
+
+[MIT](https://opensource.org/licenses/MIT)

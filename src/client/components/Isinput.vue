@@ -28,6 +28,10 @@
         <div class="color-item" v-for="item in colorArr" :style="{background: item}" @click="colorSwitch(item)"></div>
       </div>
 
+      <div class="user-btn-wrap fork-on-github">
+        <a class="small-btn" href="https://github.com/txn513/xt-notes">Fork on Github</a>
+      </div>
+
     </div>
 </template>
 
@@ -165,6 +169,8 @@ export default {
     }
   }
 
+.fork-on-github {
 
+}
 
 </style>
