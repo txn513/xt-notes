@@ -31,9 +31,9 @@ npm run dev
 ```
 
 ## 功能介绍
-首页
+####首页
 ![home](http://p8eyfvihb.bkt.clouddn.com/home1.png)
-登录
+####登录
 注册
 便签列表
 删除便签
