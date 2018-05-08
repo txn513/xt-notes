@@ -47,7 +47,6 @@ export default {
           content: this.input
         }
       }).then((res) => {
-        console.log(res)
         if (res.data.ok == 1) {
           sessionStorage.inputContent = '';
           this.$router.go(-1)

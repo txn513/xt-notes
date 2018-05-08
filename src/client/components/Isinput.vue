@@ -46,7 +46,6 @@ export default {
   methods: {
     getInput (con) {
       this.input = con;
-      console.log(this.input);
     },
     isLogin () {
       this.axios.get('/user/isLogin').then((response) => {
@@ -72,7 +71,6 @@ export default {
       if (this.input == '') {
         this.$toast('请输入内容');
         return
-
       }
       this.axios({
         method: 'post',
@@ -81,7 +79,6 @@ export default {
           content: _this.input
         }
       }).then(function (res) {
-        console.log(res.data.status == true)
         let data = res.data.status;
         if (data) {
           sessionStorage.inputContent = '';

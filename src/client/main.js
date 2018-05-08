@@ -64,8 +64,7 @@ Vue.axios.interceptors.response.use(
 const store = new Vuex.Store({
   state: {
     isLogin: null,
-    // inputContent: sessionStorage.inputContent || ''
-    currentColor: '#3c989e'
+    currentColor: localStorage.currentColor || '#3c989e'
   },
   mutations: {
     logout (state) {
@@ -75,6 +74,7 @@ const store = new Vuex.Store({
       state.isLogin = true
     },
     changeColor (state, color) {
+      localStorage.currentColor = color;
       state.currentColor = color;
     }
   }
@@ -104,7 +104,4 @@ new Vue({
   store,
   components: { App },
   template: '<App/>',
-  created () {
-    // this.isLogin()
-  }
 })

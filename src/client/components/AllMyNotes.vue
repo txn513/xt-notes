@@ -32,7 +32,6 @@ export default {
   methods: {
     getAllNotes () {
       this.axios.get('/api/listallnotes').then((response) => {
-        console.log(response.data)
         this.listOfNotes = response.data
       })
     },

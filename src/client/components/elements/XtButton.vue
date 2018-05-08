@@ -28,8 +28,6 @@ export default {
     currentColor () {
       return this.$store.state.currentColor
     }
-  },
-  created () {
   }
 }
 </script>

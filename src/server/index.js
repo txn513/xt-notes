@@ -22,11 +22,11 @@ app.use(session({
 
 
 // body-parser
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.json())
-app.use(cookieParser())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
 
 //
 // if (app.get('env') === 'development') {
@@ -42,16 +42,16 @@ app.use(express.static(path.join(__dirname, 'public')))
 // }
 
 
-app.use('/user', user)
+app.use('/user', user);
 app.use(function (req, res, next) {
   if (req.session && req.session.userid) {
-    next()
+    next();
   } else {
-    return res.status(401).send()
+    return res.status(401).send();
   }
 })
 
-app.use('/api', api)
+app.use('/api', api);
 
 app.use(function (err, req, res, next) {
 
@@ -63,7 +63,7 @@ app.use(function (err, req, res, next) {
   res.render('error');
 })
 
-const port = process.env.PORT || 4000
-app.listen(port)
+const port = process.env.PORT || 4000;
+app.listen(port);
 
 export default app

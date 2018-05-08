@@ -12,7 +12,7 @@ export default {
     return {
       colorArr: ['#3C989E', '#5DB5A4', '#F4CDA5', '#F57A82', '#ED5276']
     }
-  }
+  },
 }
 </script>
 

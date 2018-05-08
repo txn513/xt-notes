@@ -1,5 +1,4 @@
 import express from 'express'
-import mongoose from 'mongoose'
 import {Note} from '../models'
 
 let router = express.Router()
@@ -27,7 +26,7 @@ router.post('/deletenote', function (req, res, next) {
 })
 
 router.get('/listallnotes', function (req, res, next) {
-  let userid = req.session.userid
+  let userid = req.session.userid;
   Note.find({user_id: userid}, null, {sort: {date: -1}}, function (err, notes) {
     if (err) {
       return next(err)

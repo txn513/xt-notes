@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     currentColor () {
-      return this.$store.state.currentColor
+      return this.$store.state.currentColor;
     }
   },
 }
