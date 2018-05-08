@@ -34,10 +34,15 @@ npm run dev
 #### 首页
 ![home](http://p8eyfvihb.bkt.clouddn.com/home1.png)
 #### 登录
-注册
-便签列表
-删除便签
-修改便签
-更换主题
+![home](http://p8eyfvihb.bkt.clouddn.com/login.png)
+#### 注册
+![home](http://p8eyfvihb.bkt.clouddn.com/register.png)
+#### 便签列表
+![home](http://p8eyfvihb.bkt.clouddn.com/delete.png)
+#### 删除便签
+![home](http://p8eyfvihb.bkt.clouddn.com/noteslist.png)
+#### 修改便签
+![home](http://p8eyfvihb.bkt.clouddn.com/edit.png)
+#### 更换主题
 
 
