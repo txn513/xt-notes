@@ -30,21 +30,6 @@ npm run dev
 
 ```
 
-## 功能介绍
-#### 首页
-![home](http://p8eyfvihb.bkt.clouddn.com/home1.png)
-#### 便签列表
-![list](http://p8eyfvihb.bkt.clouddn.com/noteslist.png)
-#### 便签详情
-![detail](http://p8eyfvihb.bkt.clouddn.com/content.png)
-#### 删除便签
-![delete](http://p8eyfvihb.bkt.clouddn.com/delete.png)
-#### 修改便签
-![edit](http://p8eyfvihb.bkt.clouddn.com/edit.png)
-#### 登录注册
-![login-register](http://p8eyfvihb.bkt.clouddn.com/login-register.png)
-#### 更换主题
-![theme](http://p8eyfvihb.bkt.clouddn.com/home-color.png)
 
 ## License
 
