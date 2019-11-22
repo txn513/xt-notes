@@ -25,7 +25,7 @@
     "mongoose": "^5.0.16",
     "nodemon": "^1.17.3",
     "postcss-px2rem": "^0.3.0",
-    "vant": "^1.0.8",
+    "vant": "^2.1.8",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.1",
     "vue-cookies": "^1.5.6",
